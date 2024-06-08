@@ -136,7 +136,7 @@ def do_save_seeds(seeds):
     seeds = seeds.drop(columns=['Index'])
 
     # Convert DataFrame to dictionary list format and convert keys to lowercase
-    result = [{k.lower(): v for k, v in row.items()} for row in seeds.to_dict(orient='records')}
+    result = [{k.lower(): v for k, v in row.items()} for row in seeds.to_dict(orient='records')]
     print(result)
     if result:
         global saved_seeds
@@ -147,7 +147,7 @@ def do_save_seeds(seeds):
 
 def do_delete_seed(val):
     # Extract index from val using regex
-    index = re.search(r'\[(\d+)\]', val)
+    index = re.search(r'(\d+)(\d+)', val)
     global saved_seeds
     if index:
         index = int(index.group(1))
